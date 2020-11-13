@@ -24,21 +24,21 @@
   <strong>備考:</strong>
   <%= @property.note %>
 </p>
-
-  <h3>最寄り駅</h3>
+<% @closest_stations.each.with_index(1) do |closest_station, i |%>
+  <h3>最寄り駅<%= "#{i}" %> </h3>
   <p>
     <strong>路線名</strong>
-    <%= @closest_stations.route_name %>
+    <%= closest_station.route_name %>
   </p>
   <p>
     <strong>駅名</strong>
-    <%= @closest_stations.station_name %>
+    <%= closest_station.station_name %>
   </p>
   <p>
     <strong>徒歩分数</strong>
-    <%= @closest_stations.walk_minutes %>
+    <%= closest_station.walk_minutes %>
   </p>
-
+<% end %>
 <%= link_to '編集', edit_property_path(@property) %> 
 <%= link_to '戻る', properties_path %>
 
